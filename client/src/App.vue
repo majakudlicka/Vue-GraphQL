@@ -21,18 +21,14 @@ export default {
     this.getBooks();
   },
   methods :{
-    update() {
-      // this.getBooks();
-      // this.$forceUpdate();
-      this.getBooks();
+    update(books) {
+      this.bookList = books;
     },
     async getBooks() {
       const { data } = await this.$apollo.query({
         query: getBooksQuery
       });
-      console.log('----> data ', data);
       if (data && data.books) this.bookList = data.books;
-      console.log('---> bookList ', this.bookList);
     }
   },
   name: 'app',

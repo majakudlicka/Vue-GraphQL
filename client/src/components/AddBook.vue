@@ -21,6 +21,12 @@
     import { getBooksQuery, getAuthorsQuery, addBookMutation} from "../queries/queries";
 
     export default {
+        async created() {
+            const { data } = await this.$apollo.query({
+                query: getBooksQuery
+            });
+            if (data && data.books) this.books= data.books;
+        },
         async mounted() {
             const { data } = await this.$apollo.query({
                 query: getAuthorsQuery
@@ -31,7 +37,8 @@
             bookName: '',
             genre: '',
             author: '',
-            authorsArray: []
+            authorsArray: [],
+            books: []
         }),
         methods: {
             async submitForm(e) {
@@ -43,13 +50,31 @@
                         genre: this.genre,
                         authorId: this.author
                     },
-                    refetchQueries: [{query: getBooksQuery}],
+                    update: (store, { data: { addBook } }) => {
+                        this.books = this.updateStoreAfterCreate(store, addBook, getBooksQuery, 'books');
+                    }
+                    // refetchQueries: [{query: getBooksQuery}],
                     // update: (store, { data: { books } }) => {
                     //     this.updateStoreAfterVote(store, books)
                     // }
                 });
-                this.$emit('refresh-books');
-            }
+                console.log('this.books ', this.books);
+                this.$emit('refresh-books', this.books);
+            },
+            updateStoreAfterCreate (store, payload, query, field) {
+                // We get our current store for the given Query
+                const data = store.readQuery({
+                    query: query
+                });
+                console.log('data? ', data);
+                console.log('addBook ', payload);
+                //We add the new data
+                data[field].push(payload);
+
+                //We update the cache
+                store.writeQuery({ query: query, data });
+                return data[field];
+            },
         },
 
         computed: {
