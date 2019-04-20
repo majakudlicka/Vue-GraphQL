@@ -2,27 +2,49 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
   "dependencies": {
     "apollo-boost": "0.3.1",
-    "graphql": "14.2.1",
-    "react": "^16.8.6",
-    "react-apollo": "2.5.4",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "bootstrap": "4.3.1",
+    "bootstrap-vue": "2.0.0-rc.18",
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
   ]
 }
