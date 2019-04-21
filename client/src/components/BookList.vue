@@ -7,8 +7,6 @@
 </template>
 
 <script>
-    import { getBooksQuery } from "../queries/queries";
-
     export default {
         props: ['list'],
         data: ()=>({
