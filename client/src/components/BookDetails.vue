@@ -6,7 +6,7 @@
             <p>{{book.author.name}}</p>
             <p>All books by this author:</p>
             <ul class="other-books">
-                <li :key="item.id" v-for="item in book.author.books">{{item.name}}</li>
+                <li :key="item.id" v-for="item in book.author.books">{{item.name}}, {{ item.genre}}</li>
             </ul>
         </div>
         <div v-else>No book selected...</div>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import { getBookQuery} from "../queries/queries";
+    import { GET_BOOK_QUERY } from "../queries/queries";
 
     export default {
         props:['bookId'],
@@ -25,7 +25,7 @@
             async bookId(val) {
                 if (val) {
                     const { data } = await this.$apollo.query({
-                        query: getBookQuery,
+                        query: GET_BOOK_QUERY,
                         variables: {
                             id: val
                         }

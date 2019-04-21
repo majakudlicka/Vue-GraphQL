@@ -18,12 +18,12 @@
 </template>
 
 <script>
-    import { getBooksQuery, getAuthorsQuery, addBookMutation} from "../queries/queries";
+    import { GET_BOOKS_QUERY, GET_AUTHORS_QUERY, ADD_BOOK_MUTATION} from "../queries/queries";
 
     export default {
         async mounted() {
             const { data } = await this.$apollo.query({
-                query: getAuthorsQuery
+                query: GET_AUTHORS_QUERY
             });
             if (data && data.authors) this.authorsArray = data.authors;
         },
@@ -37,14 +37,14 @@
             async submitForm(e) {
                 e.preventDefault();
                 await this.$apollo.mutate({
-                    mutation: addBookMutation,
+                    mutation: ADD_BOOK_MUTATION,
                     variables: {
                         name: this.bookName,
                         genre: this.genre,
                         authorId: this.author
                     },
                     update: (store, { data: { addBook } }) => {
-                        const books = this.updateStoreAfterCreate(store, addBook, getBooksQuery, 'books');
+                        const books = this.updateStoreAfterCreate(store, addBook, GET_BOOKS_QUERY, 'books');
                         this.$emit('refresh-books', books);
                     }
                 });

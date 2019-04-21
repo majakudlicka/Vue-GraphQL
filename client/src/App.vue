@@ -11,7 +11,7 @@
 <script>
 import BookList from './components/BookList';
 import AddBook from './components/AddBook';
-import { getBooksQuery } from './queries/queries'
+import { GET_BOOKS_QUERY } from './queries/queries'
 
 export default {
   mounted() {
@@ -23,7 +23,7 @@ export default {
     },
     async getBooks() {
       const { data } = await this.$apollo.query({
-        query: getBooksQuery
+        query: GET_BOOKS_QUERY
       });
       if (data && data.books) this.bookList = data.books;
     }
