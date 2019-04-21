@@ -1,9 +1,10 @@
 body{
-  background: #eee;
+  background: yellow;
+  font-family: "Chalkboard", sans-serif;
 }
 
 #app h1{
-  color: #444;
+  color: yellowgreen;
   text-align: center;
 }
 
@@ -23,10 +24,10 @@ body{
   margin: 12px;
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid #880E4F;
+  border: 1px solid yellowgreen;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
   cursor: pointer;
-  color: #880E4F;
+  color: yellowgreen;
 }
 
 form{
@@ -56,9 +57,9 @@ form input, form select{
 }
 
 form button{
-  color: #fff;
+  color: yellowgreen;
   font-size: 2em;
-  background: #AD1457;
+  background: yellow;
   border: 0;
   padding: 0 10px;
   border-radius: 50%;
@@ -74,7 +75,7 @@ form button{
   right: 0;
   width: 40%;
   height: 100%;
-  background: #AD1457;
+  background: yellowgreen;
   padding: 30px;
   overflow: auto;
   box-shadow: -2px -3px 5px rgba(0,0,0,0.3);

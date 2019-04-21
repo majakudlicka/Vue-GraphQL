@@ -1,5 +1,5 @@
 <template>
-    <b-form @submit="submitForm">
+    <form @submit="submitForm">
         <div class="field">
             <label>Book name:</label>
             <input type="text" v-model="bookName">
@@ -13,8 +13,8 @@
             <b-select :options="authorOptions" v-model="author">
             </b-select>
         </div>
-        <b-button type="submit">+</b-button>
-    </b-form>
+        <button type="submit">+</button>
+    </form>
 </template>
 
 <script>
